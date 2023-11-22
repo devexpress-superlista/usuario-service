@@ -27,15 +27,24 @@ jobs:
       run: mvn test
 
   open_pr:
-
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: develop
-          base: "feature/**"
+          title: 'Automated PR from GitHub Actions'
+          branch: feature/**
+          base: develop
           body: 'Automatically opened PR after successful build and tests.'
           token: ${{ secrets.AUTHORIZATION_TOKEN }}
