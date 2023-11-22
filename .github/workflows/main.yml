@@ -43,9 +43,7 @@ jobs:
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: ${{ github.event.pull_request.title }}
           branch: ${{ github.ref }}
           base: develop
-          body: ${{ github.event.pull_request.body }}
           token: ${{ secrets.AUTHORIZATION_TOKEN }}
           draft: false
