@@ -44,7 +44,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           title: 'Automated PR from GitHub Actions'
-          branch: feature/**
+          branch: feature/crud-user
           base: develop
           body: 'Automatically opened PR after successful build and tests.'
           token: ${{ secrets.AUTHORIZATION_TOKEN }}
