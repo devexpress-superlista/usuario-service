@@ -1,4 +1,4 @@
-package com.devexpresssuperlista.adapters.port.usecase;
+package com.devexpresssuperlista.adapters.input.usecase;
 
 
 import com.devexpresssuperlista.applications.domain.entity.User;

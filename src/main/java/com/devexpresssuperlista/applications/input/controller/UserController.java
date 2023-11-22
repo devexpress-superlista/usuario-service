@@ -1,6 +1,6 @@
 package com.devexpresssuperlista.applications.input.controller;
 
-import com.devexpresssuperlista.adapters.port.usecase.GetUserUseCase;
+import com.devexpresssuperlista.adapters.input.usecase.GetUserUseCase;
 import com.devexpresssuperlista.applications.domain.dto.UserDTO;
 import com.devexpresssuperlista.applications.domain.entity.User;
 import com.devexpresssuperlista.applications.usecase.SaveUserUseCase;
