@@ -43,9 +43,12 @@ jobs:
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: 'Automated PR from GitHub Actions'
           branch: ${{ github.ref }}
           base: develop
-          body: 'Automatically opened PR after successful build and tests.'
+          delete-branch: true
+          assignees: Salomao123
+          reviewers: Salomao123
+          team-reviewers: |
+            developers
           token: ${{ secrets.AUTHORIZATION_TOKEN }}
           draft: false
