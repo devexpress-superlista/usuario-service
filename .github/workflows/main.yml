@@ -45,30 +45,8 @@ jobs:
         with:
           branch: ${{ github.ref }}
           base: develop
+          delete-branch: true
+          team-reviewers: |
+            developers
           token: ${{ secrets.AUTHORIZATION_TOKEN }}
           draft: false
-
-  add_reviewers:
-    needs: open_pr
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '17'
-
-      - name: Build with Maven
-        run: mvn -B clean package
-
-      - name: Run Tests
-        run: mvn test
-
-      - name: Add Reviewers
-        run: |
-          PR_NUMBER=$(curl -s -X GET -H "Authorization: Bearer ${{ secrets.AUTHORIZATION_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/pulls?head=develop&state=open" | jq -r '.[0].number')
-          gh pr review -a Salomao123 -b $PR_NUMBER
