@@ -2,6 +2,8 @@ name: Java CI with Maven
 
 on:
   push:
+    branches:
+      - "feature/**"
 
 jobs:
   build:
@@ -23,3 +25,17 @@ jobs:
 
     - name: Run Tests
       run: mvn test
+
+  open_pr:
+
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Open Pull Request
+        uses: https://github.com/devexpress-superlista/usuario-service/create-pull-request@v3
+        with:
+          branch: develop
+          base: "feature/**"
+          body: 'Automatically opened PR after successful build and tests.'
+          token: ${{ secrets.AUTHORIZATION_TOKEN }}
