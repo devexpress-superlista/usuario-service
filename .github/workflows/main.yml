@@ -71,4 +71,4 @@ jobs:
       - name: Add Reviewers
         run: |
           PR_NUMBER=$(curl -s -X GET -H "Authorization: Bearer ${{ secrets.AUTHORIZATION_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/pulls?head=develop&state=open" | jq -r '.[0].number')
-          gh pr review -a your-github-username -b $PR_NUMBER
+          gh pr review -a Salomao123 -b $PR_NUMBER
