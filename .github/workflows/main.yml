@@ -47,3 +47,4 @@ jobs:
           base: develop
           token: ${{ secrets.AUTHORIZATION_TOKEN }}
           draft: false
+          reviewers: Salomao123
