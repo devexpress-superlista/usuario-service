@@ -26,3 +26,15 @@ jobs:
 
       - name: Run Tests
         run: mvn test
+
+  deploy-to-dev:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build and push Docker image
+        run: |
+          ./build.sh
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
