@@ -40,6 +40,10 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '17'
+          
+      - name: Make build script executable
+        run: chmod +x build.sh
+        shell: bash
 
       - name: Build and push Docker image
         run: |
